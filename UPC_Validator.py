@@ -15,11 +15,11 @@ def find_UPC(upc_string):
         else:
             sum_a += int(digit) * 3
         string_spot += 1
-    calc_check = (sum_a + sum_b) % 10
-    if calc_check == 0:
+    sum_m = (sum_a + sum_b) % 10
+    if sum_m == 0:
         return 0
     else:
-        return 10 - calc_check
+        return 10 - sum_m
 
 
 #Need input logic
@@ -32,7 +32,14 @@ while len(upc_code) != 12:
     elif not(upc_code.isdigit()):
         print("UPC codes cannot contain any letters.")
         upc_code = ""
+
 print(f"\nThe first 11 digits of the UPC code are: {upc_code[:-1]}")
 print(f"The given check digit is: {upc_code[-1]}")
 
-#Need output logic
+calc_check = str(find_UPC(upc_code[:-1]))
+print(f"The calculated check digit is: {calc_check}")
+
+if calc_check == upc_code[-1]:
+    print("This UPC code is VALID")
+else:
+    print("This UPC code is INVALID")
