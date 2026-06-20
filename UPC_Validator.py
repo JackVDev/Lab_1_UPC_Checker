@@ -32,5 +32,7 @@ while len(upc_code) != 12:
     elif not(upc_code.isdigit()):
         print("UPC codes cannot contain any letters.")
         upc_code = ""
-print("Loop over")
+print(f"\nThe first 11 digits of the UPC code are: {upc_code[:-1]}")
+print(f"The given check digit is: {upc_code[-1]}")
+
 #Need output logic
