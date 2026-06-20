@@ -5,6 +5,22 @@ This program was made for a CSCC Python course, and is meant to validate a UPC-A
 """
 
 #Need find_UPC() function
+def find_UPC(upc_string):
+    sum_a = 0
+    sum_b = 0
+    string_spot = 1
+    for digit in upc_string:
+        if string_spot % 2 == 0:
+            sum_b += int(digit)
+        else:
+            sum_a += int(digit) * 3
+        string_spot += 1
+    calc_check = (sum_a + sum_b) % 10
+    if calc_check == 0:
+        return 0
+    else:
+        return 10 - calc_check
+
 
 #Need input logic
 upc_code = ""
